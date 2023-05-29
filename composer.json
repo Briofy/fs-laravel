@@ -1,0 +1,31 @@
+{
+  "name": "briofy/fs-laravel",
+  "description": "The official repository of File System module from Briofy for Laravel",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Hosein Danamehr",
+      "email": "h.danamehr@briofy.net"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "briofy/repository-laravel": "dev-main"
+  },
+  "require-dev": {
+    "laravel/pint": "^1.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "Briofy\\FileSystem\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Briofy\\FileSystem\\Providers\\FileSystemServiceProvider"
+      ]
+    }
+  }
+}
