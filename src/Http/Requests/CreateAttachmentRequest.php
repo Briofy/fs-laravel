@@ -21,6 +21,7 @@ class CreateAttachmentRequest extends FormRequest
         $mimes = [
             Type::IMAGE->value => 'png,jpg,jpeg',
             Type::DOCUMENT->value => 'zip,rar',
+            Type::VIDEO->value => 'mp4',
         ];
 
         return [
