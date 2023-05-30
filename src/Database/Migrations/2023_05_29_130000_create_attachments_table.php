@@ -16,16 +16,16 @@ return new class extends Migration
     {
         Schema::create('attachments', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('user_id')->index();
+
+            config('briofy-filesystem.attachments.user_id_type') == 'uuid'
+                ? $table->uuid('user_id')->index()
+                : $table->unsignedBigInteger('user_id')->index();
+
             $table->string('disk');
             $table->string('path');
             $table->unsignedSmallInteger('type')->default(Type::IMAGE->value);
             $table->timestamps();
             $table->softDeletes();
-
-            config('briofy-filesystem.attachments.user_id_type') == 'uuid'
-                ? $table->uuid('user_id')->index()->after('id')
-                : $table->unsignedBigInteger('user_id')->index()->after('id');
         });
     }
 
