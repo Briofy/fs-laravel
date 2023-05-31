@@ -18,6 +18,7 @@ return new class extends Migration
                 $table->uuid('attachment_id');
                 $table->uuidMorphs('attachmentable');
                 $table->timestamps();
+                $table->softDeletes();
         });
     }
 

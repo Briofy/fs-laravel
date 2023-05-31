@@ -2,13 +2,13 @@
 
 namespace Briofy\FileSystem\Traits;
 
-use Briofy\FileSystem\Models\Attachment;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Briofy\FileSystem\Models\Attachmentable;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait HasAttachments
 {
-    public function attachments(): MorphToMany
+    public function attachmentables(): MorphMany
     {
-        return $this->morphToMany(Attachment::class, 'attachmentable')->withTimestamps();
+        return $this->morphMany(Attachmentable::class, 'attachmentable');
     }
 }
