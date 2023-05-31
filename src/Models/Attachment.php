@@ -21,6 +21,13 @@ class Attachment extends Model
 
     protected $hidden = ['pivot'];
 
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->setConnection(config('briofy-filesystem.attachments.db_connection'));
+    }
+
     protected static function newFactory()
     {
         return AttachmentFactory::new();

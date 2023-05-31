@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('attachmentables', function (Blueprint $table) {
-            $table->uuid('attachment_id');
-            $table->uuidMorphs('attachmentable');
-            $table->timestamps();
+        Schema::connection(config('briofy-filesystem.attachments.db_connection'))
+            ->create('attachmentables', function (Blueprint $table) {
+                $table->uuid('attachment_id');
+                $table->uuidMorphs('attachmentable');
+                $table->timestamps();
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attachmentables');
+        Schema::connection(config('briofy-filesystem.attachments.db_connection'))->dropIfExists('attachmentables');
     }
 };
