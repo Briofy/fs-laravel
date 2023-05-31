@@ -14,18 +14,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('attachments', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+        Schema::connection(config('briofy-filesystem.attachments.db_connection'))
+            ->create('attachments', function (Blueprint $table) {
+                $table->uuid('id')->primary();
 
-            config('briofy-filesystem.attachments.user_id_type') == 'uuid'
-                ? $table->uuid('user_id')->index()
-                : $table->unsignedBigInteger('user_id')->index();
+                config('briofy-filesystem.attachments.user_id_type') == 'uuid'
+                    ? $table->uuid('user_id')->index()
+                    : $table->unsignedBigInteger('user_id')->index();
 
-            $table->string('disk');
-            $table->string('path');
-            $table->unsignedSmallInteger('type')->default(Type::IMAGE->value);
-            $table->timestamps();
-            $table->softDeletes();
+                $table->string('disk');
+                $table->string('path');
+                $table->unsignedSmallInteger('type')->default(Type::IMAGE->value);
+                $table->timestamps();
+                $table->softDeletes();
         });
     }
 
@@ -36,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attachments');
+        Schema::connection(config('briofy-filesystem.attachments.db_connection'))->dropIfExists('attachments');
     }
 };
