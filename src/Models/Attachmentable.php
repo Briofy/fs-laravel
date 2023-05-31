@@ -14,6 +14,7 @@ class Attachmentable extends Model
         'attachment_id',
         'attachmentable_type',
         'attachmentable_id',
+        'attachmentable_field',
     ];
 
     public function __construct(array $attributes = [])

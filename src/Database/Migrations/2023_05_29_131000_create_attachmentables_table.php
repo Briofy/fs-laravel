@@ -17,6 +17,7 @@ return new class extends Migration
             ->create('attachmentables', function (Blueprint $table) {
                 $table->uuid('attachment_id');
                 $table->uuidMorphs('attachmentable');
+                $table->string('attachmentable_field');
                 $table->timestamps();
                 $table->softDeletes();
         });
