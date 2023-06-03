@@ -18,9 +18,14 @@ class Attachment extends Model
         'disk',
         'path',
         'type',
+        'options',
     ];
 
     protected $hidden = ['pivot'];
+
+    protected $casts = [
+        'options' => 'array',
+    ];
 
     public function __construct(array $attributes = [])
     {

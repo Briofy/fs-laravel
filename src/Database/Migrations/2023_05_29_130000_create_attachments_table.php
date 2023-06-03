@@ -25,6 +25,7 @@ return new class extends Migration
                 $table->string('disk');
                 $table->string('path');
                 $table->unsignedSmallInteger('type')->default(Type::IMAGE->value);
+                $table->longText('options')->nullable();
                 $table->timestamps();
                 $table->softDeletes();
         });
