@@ -16,6 +16,7 @@ class StoreAttachmentJob
         private string|int $userId,
         private string $disk,
         private string $directory,
+        private ?array $options = null,
     ) {
     }
 
@@ -29,6 +30,7 @@ class StoreAttachmentJob
             'disk' => $this->disk,
             'path' => $this->upload($this->data['file'], $this->disk, $this->directory),
             'type' => $this->data['type'],
+            'options' => $this->options,
         ]);
     }
 }
