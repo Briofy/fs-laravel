@@ -11,7 +11,8 @@ enum Type: int
     case IMAGE = 11001;
     case VIDEO = 11002;
     case AUDIO = 11003;
-    case FILE = 11004;
-    case DOCUMENT = 11005;
-    case OTHER = 11006;
+    case GIF = 11004;
+    case FILE = 11005;
+    case DOCUMENT = 11006;
+    case OTHER = 11007;
 }
